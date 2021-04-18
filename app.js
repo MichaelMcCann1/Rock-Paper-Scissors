@@ -1,24 +1,29 @@
-let roundNumber = document.querySelector('.roundNumber');
-let ties = document.querySelector('.tiesCounter');
-let playerScore = document.querySelector('.humanCounter');
-let compScore = document.querySelector('.computerCounter');
-let humanRock = document.querySelector('.humanRock');
-let compRock = document.querySelector('.compRock');
+const roundNumber = document.querySelector('.roundNumber');
+const ties = document.querySelector('.tiesCounter');
+const playerScore = document.querySelector('.humanCounter');
+const compScore = document.querySelector('.computerCounter');
+const humanRock = document.querySelector('.humanRock');
+const compRock = document.querySelector('.compRock');
 let roundCounter = 0;
+let gameInProgress = false;
 
 const play = (playerSelection) => {
-  roundNumber.textContent = 'Round ' + ++roundCounter;                    //update round number
-  clearImages();                                                          //clear the images on the screen
-  shake();                                                                //animate the fists
-  let compSelection = Math.floor(Math.random() * Math.floor(3));          //get computer's selection
-  setTimeout(() => {                                                      //wait until animation is complete
-    updateImages(playerSelection, compSelection);                         //update images to reflect selections
-    getWinner(playerSelection, compSelection)                             //get winner and update points
-  }, 1400);                                                              
+  if (gameInProgress === false){
+    gameInProgress = true;
+    roundNumber.textContent = 'Round ' + ++roundCounter;                    //update round number
+    clearImages();                                                          //clear the images on the screen
+    shake();                                                                //animate the fists
+    let compSelection = Math.floor(Math.random() * Math.floor(3));          //get computer's selection
+    setTimeout(() => {                                                      //wait until animation is complete
+      updateImages(playerSelection, compSelection);                         //update images to reflect selections
+      getWinner(playerSelection, compSelection)                             //get winner and update points
+      gameInProgress = false;
+    }, 1400);
+  }                         
 }
 
 const clearImages = () => {
-  notRock = document.querySelectorAll('.notRock'); //select all images that are not rock
+  let notRock = document.querySelectorAll('.notRock'); //select all images that are not rock
   notRock.forEach((item) => {item.style.display = 'none'}); //set display to none
 }
 
@@ -61,7 +66,7 @@ const updateImages = (player, comp) => {
 }
 
 const getWinner = (player, comp) => {
-  var diff = Math.abs(player - comp);
+  let diff = Math.abs(player - comp);
   if (diff === 1) {
     (player > comp)? (playerScore.textContent = parseInt(playerScore.textContent) + 1) : (compScore.textContent = parseInt(compScore.textContent) + 1);
   }
