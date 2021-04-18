@@ -9,28 +9,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
   <script src='app.js' defer></script>
 </head>
-
 <body>
-
   <section class="round">
-    <h1>Round 0</h1>
+    <h1 class="roundNumber">Round 0</h1>
   </section>
-
   <section class="scores">
     <div class="human">
       <h2>Player</h2>
-      <p>0</p>
+      <p class="humanCounter">0</p>
     </div>
     <div class="ties">
       <h2>Ties</h2>
-      <p>0</p>
+      <p class="tiesCounter">0</p>
     </div>
     <div class="computer">
       <h2>Computer</h2>
-      <p>0</p>
+      <p class="computerCounter">0</p>
     </div>
   </section>
-
   <section class="hands">
     <img src="Images/rock.png" class="humanRock" alt="rock">
     <img src="Images/paper.png" class="humanPaper notRock" alt="paper">
@@ -39,12 +35,10 @@
     <img src="Images/paper.png" class="compPaper notRock" alt="rock">
     <img src="Images/scissors.png" class="compScissors notRock" alt="scissors">
   </section>
-
   <section class="buttons">
     <button class="rock" onclick="play(0)">Rock</button>
     <button class="paper" onclick="play(1)">Paper</button>
     <button class="scissors" onclick="play(2)">Scissors</button>
   </section>
-
 </body>
 </html>

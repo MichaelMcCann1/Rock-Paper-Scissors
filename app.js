@@ -1,20 +1,21 @@
-let roundNumber = document.querySelector('.round h1');
-let ties = document.querySelector('.ties p');
-let playerScore = document.querySelector('.human p');
-let compScore = document.querySelector('.computer p');
+let roundNumber = document.querySelector('.roundNumber');
+let ties = document.querySelector('.tiesCounter');
+let playerScore = document.querySelector('.humanCounter');
+let compScore = document.querySelector('.computerCounter');
 let humanRock = document.querySelector('.humanRock');
 let compRock = document.querySelector('.compRock');
-let i = 0;
+let roundCounter = 0;
 
 const play = (playerSelection) => {
-  roundNumber.innerHTML = 'Round ' + ++i;                                 //update round number
+  roundNumber.textContent = 'Round ' + ++roundCounter;                    //update round number
   clearImages();                                                          //clear the images on the screen
   shake();                                                                //animate the fists
-  compSelection = Math.floor(Math.random() * Math.floor(3));              //get computer's selection
-  setTimeout(() => {updateImages(playerSelection, compSelection);         //wait until animation is complete
-    getWinner(playerSelection, compSelection)}, 1400);                    //get winner and update points
+  let compSelection = Math.floor(Math.random() * Math.floor(3));          //get computer's selection
+  setTimeout(() => {                                                      //wait until animation is complete
+    updateImages(playerSelection, compSelection);                         //update images to reflect selections
+    getWinner(playerSelection, compSelection)                             //get winner and update points
+  }, 1400);                                                              
 }
-
 
 const clearImages = () => {
   notRock = document.querySelectorAll('.notRock'); //select all images that are not rock
@@ -32,35 +33,42 @@ const updateImages = (player, comp) => {
   humanRock.style.animation = 'none'; //set animation to none to prevent another animation
   compRock.style.animation = 'none';
   humanRock.style.display = 'none'; //hide rock
+  compRock.style.display = 'none'
 
-  if (player === 0) {
-    humanRock.style.display = 'inline'; //hide rock
-  } else if (player === 1) { //if selection is paper
-    document.querySelector('.humanPaper').style.display = 'inline'; //show paper
-  } else { //if selection is scissors
-    document.querySelector('.humanScissors').style.display = 'inline'; //show Scissors
+  switch(player){
+    case 0: 
+      humanRock.style.display = 'inline'; //hide rock
+      break;
+    case 1:
+      document.querySelector('.humanPaper').style.display = 'inline'; //show paper
+      break;
+    case 2:
+      document.querySelector('.humanScissors').style.display = 'inline'; //show Scissors
+      break;
   }
  
-  compRock.style.display = 'none'
-  if (comp === 0) {
-    compRock.style.display = 'inline'; //hide rock
-  } else if (comp === 1) { //if selection is paper
-     document.querySelector('.compPaper').style.display = 'inline'; //show paper
-  } else { //if selection is scissors
-     document.querySelector('.compScissors').style.display = 'inline'; //show Scissors
-  } 
+  switch(comp){
+    case 0: 
+      compRock.style.display = 'inline'; //hide rock
+      break;
+    case 1:
+      document.querySelector('.compPaper').style.display = 'inline'; //show paper
+      break;
+    case 2:
+      document.querySelector('.compScissors').style.display = 'inline'; //show Scissors
+      break;
+  }
 }
 
 const getWinner = (player, comp) => {
   var diff = Math.abs(player - comp);
-
   if (diff === 1) {
-    (player > comp)? (playerScore.innerHTML = parseInt(playerScore.innerHTML) + 1) : (compScore.innerHTML = parseInt(compScore.innerHTML) + 1);
+    (player > comp)? (playerScore.textContent = parseInt(playerScore.textContent) + 1) : (compScore.textContent = parseInt(compScore.textContent) + 1);
   }
   else if (diff > 1) {
-    (player < comp)? (playerScore.innerHTML = parseInt(playerScore.innerHTML) + 1) : (compScore.innerHTML = parseInt(compScore.innerHTML) + 1);
+    (player < comp)? (playerScore.textContent = parseInt(playerScore.textContent) + 1) : (compScore.textContent = parseInt(compScore.textContent) + 1);
   }
   else {
-    ties.innerHTML = parseInt(ties.innerHTML) + 1;
+    ties.innerHTML = parseInt(ties.textContent) + 1;
   }
 }
