@@ -2,7 +2,8 @@
 
 The classic Rock Paper Scissors game made with HTML, CSS, and vanilla JavaScript. Play against the computer and the game will keep track of the score. This game has a responsive interface and will work with any screen size.
 
-<img src="https://https://github.com/MichaelMcCann1/Rock-Paper-Scissors/blob/main/RockPaperScissorsScreenshot.png" width="500" height="400">
+
+<img src="https://github.com/MichaelMcCann1/Rock-Paper-Scissors/blob/main/RockPaperScissorsScreenshot.png" height="400px">
 
 
 ## Code Explanation
