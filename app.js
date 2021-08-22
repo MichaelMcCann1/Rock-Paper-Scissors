@@ -83,7 +83,7 @@ const getWinner = (player, comp) => {
   if (diff === 1) {
     (player > comp)? (playerScore.textContent = parseInt(playerScore.textContent) + 1) : (computerScore.textContent = parseInt(computerScore.textContent) + 1);
   }
-  else if (diff > 1) {
+  else if (diff === 2) {
     (player < comp)? (playerScore.textContent = parseInt(playerScore.textContent) + 1) : (computerScore.textContent = parseInt(computerScore.textContent) + 1);
   }
   else {
