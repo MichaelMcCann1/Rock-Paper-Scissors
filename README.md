@@ -1,5 +1,7 @@
 # Rock-Paper-Scissors
 
+**Live Link to project:** https://mm-rockpaperscissors.web.app/
+
 The classic Rock Paper Scissors game made with HTML, CSS, and vanilla JavaScript. Play against the computer and the game will keep track of the score. This game has a responsive interface and will work with any screen size.
 
 
